@@ -1,15 +1,15 @@
 import asyncio
+from aiogram import Bot, Dispatcher
 from config_data.config import Config, load_config
 from handlers import other_handlers, user_handlers
+from aiogram.types import BotCommand, InlineKeyboardButton
 from keyboards.set_menu import set_main_menu
-from aiogram import Bot, Dispatcher
-from aiogram.fsm.storage.memory import MemoryStorage
 
+
+# Функция конфигурирования и запуска бота
 async def main():
-    storage = MemoryStorage()
     # Загружаем конфиг в переменную config
     config: Config = load_config()
-    user_dict: dict[int, dict[str, str | int | bool]] = {}
 
     # Инициализируем бот и диспетчер
     bot = Bot(token=config.tg_bot.token)
@@ -19,12 +19,13 @@ async def main():
     dp.include_router(user_handlers.router)
     dp.include_router(other_handlers.router)
 
+
+
     # Пропускаем накопившиеся апдейты и запускаем polling
     await bot.delete_webhook(drop_pending_updates=True)
     await set_main_menu(bot)
     await dp.start_polling(bot)
 
 
-# Функция конфигурирования и запуска бота
 if __name__ == '__main__':
     asyncio.run(main())

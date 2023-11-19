@@ -12,6 +12,6 @@ router = Router()
 async def send_echo(message: Message):
     print(message)
     try:
-        await message.send_copy(chat_id=message.chat.id)
+        await message.reply(text=LEXICON_RU['unknown'])
     except TypeError:
         await message.reply(text=LEXICON_RU['no_echo'])
