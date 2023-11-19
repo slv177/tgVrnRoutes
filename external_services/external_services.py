@@ -1,7 +1,18 @@
-def get_routes() -> dict[str: str]:
-    return {"1, Больница - Завод": "11", "2, Площадь - Стадион":"22", "3, БКЗ - Завод":"33"}
+routes = {"r11": "1, Больница - Завод" , "r22": "2, Площадь - Стадион", "r33": "3, БКЗ - Завод"}
 
+rides = {"r11": {"z890": "10:00", "nw33": "11:00", "dew": "12:00", "xsq": "13:00", "mkm": "14:00"},
+         "r22": {"zxcd": "10:15", "vfv": "11:15", "w2w2": "12:15"},
+         "r33": {"yh": "10:30", "dede": "11:30", "mju": "12:30"}}
+
+def get_routes() -> dict[str: str]:
+    return routes
+
+def get_route_name(route_id: str) -> str:
+    return routes[route_id]
 
 def get_rides(route: str) -> dict[str: str]:
-    rides = {"11": {"10:00":"111", "11:00":"222", "12:00":"333"}, "22": {"10:15":"12", "11:15":"14", "12:15":"15"}, "33": {"10:30":"44", "11:30":"52", "12:30":"303"}}
     return rides[route]
+
+def get_ride_time(route_id: str, ride_id:str) -> str:
+    return rides[route_id][ride_id]
+
