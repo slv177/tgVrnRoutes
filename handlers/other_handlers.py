@@ -10,7 +10,7 @@ router = Router()
 # кроме команд "/start" и "/help"
 @router.message()
 async def send_echo(message: Message):
-    print(message)
+    print("send_echo", message)
     try:
         await message.reply(text=LEXICON_RU['unknown'])
     except TypeError:

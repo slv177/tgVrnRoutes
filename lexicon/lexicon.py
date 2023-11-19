@@ -6,6 +6,7 @@ LEXICON_RU: dict[str, str] = {
     'no_echo': '??? ## '
 }
 
+# меню внизу
 LEXICON_COMMANDS_RU: dict[str, str] = {
     '/start': 'Привет!\@@',
     '/help': 'Текст @@',

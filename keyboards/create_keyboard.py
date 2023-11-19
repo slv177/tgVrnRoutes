@@ -33,3 +33,22 @@ def create_inline_kb(width: int,
 
     # Возвращаем объект инлайн-клавиатуры
     return kb_builder.as_markup()
+
+def create_registration_kb():
+    registration_button = InlineKeyboardButton(
+        text='Регистрация',
+        callback_data='registration'
+    )
+    cancel_button = InlineKeyboardButton(
+        text='Отмена',
+             callback_data='cancel'
+    )
+
+    keyboard: list[list[InlineKeyboardButton]] = [[registration_button, cancel_button]]
+    markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
+    return markup
+
+
+
+
+
