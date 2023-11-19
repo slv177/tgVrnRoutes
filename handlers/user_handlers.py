@@ -105,7 +105,10 @@ async def process_ride_press(callback: CallbackQuery, state: FSMContext):
 async def process_choose_press(callback: CallbackQuery, state: FSMContext):
     print("process_choose_press", callback.data)
     if callback.data == "registration":
-        print("rr")
+        ride_detail = await state.get_data()
+        await callback.message.edit_text(
+            text=f'Вы зарегистрированы на рейс в {ride_detail["ride_time"]} маршрута "{ride_detail["route_name"]}". \nОсталось Х мест.\n'
+        )
     if callback.data == "cancel":
         await callback.message.edit_text(
             text='Вы сбросили настройки\n\n'
