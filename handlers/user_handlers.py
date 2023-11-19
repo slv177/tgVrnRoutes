@@ -9,6 +9,7 @@ from aiogram.fsm.context import FSMContext
 from states.states import FSMFillForm
 
 
+
 # Инициализируем роутер уровня модуля
 router = Router()
 
@@ -93,8 +94,6 @@ async def process_ride_press(callback: CallbackQuery, state: FSMContext):
     keyboard = create_registration_kb()
     ride_detail = await state.get_data()
     await state.update_data(ride_time=get_ride_time(ride_detail['route_id'], callback.data))
-    print("3", await state.get_state())
-    print("4", await state.get_data())
     ride_detail = await state.get_data()
     await callback.message.edit_text(text=f'Будете регистрироваться на рейс в {ride_detail["ride_time"]} маршрута "{ride_detail["route_name"]}"? \n Осталось Х мест.')
     await callback.message.edit_reply_markup(reply_markup=keyboard)

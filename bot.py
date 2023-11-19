@@ -5,15 +5,13 @@ from keyboards.set_menu import set_main_menu
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
+
 async def main():
     storage = MemoryStorage()
     # Загружаем конфиг в переменную config
     config: Config = load_config()
-    user_dict: dict[int, dict[str, str | int | bool]] = {}
-
-    # Инициализируем бот и диспетчер
     bot = Bot(token=config.tg_bot.token)
-    dp = Dispatcher()
+    dp = Dispatcher(storage=storage)
 
     # Регистриуем роутеры в диспетчере
     dp.include_router(user_handlers.router)

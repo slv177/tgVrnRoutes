@@ -17,5 +17,6 @@ packaging==23.2
 pydantic==2.3.0
 pydantic_core==2.6.3
 python-dotenv==1.0.0
+ruff==0.1.6
 typing_extensions==4.7.1
 yarl==1.9.2
